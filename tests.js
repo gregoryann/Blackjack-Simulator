@@ -135,4 +135,12 @@ describe('Table', function() {
         expect(table.players.length).toBe(2);
         expect(table.dealer.deck).toBeTruthy();
     });
+
+    it('should have a function to add cards to the hand array', function() {
+        deck = new Deck();
+        dealer = new Dealer(deck);
+        var dealedCards = dealer.dealCards(2);
+        player.addCardsToHand(dealedCards);
+        expect(player.hand.length).toBe(2);
+    });
 });
