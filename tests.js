@@ -103,3 +103,36 @@ describe('Dealer', function() {
 
     });
 });
+
+
+describe('Player', function() {
+    var player;
+    beforeEach(function() {
+        player = new Player('dominik');
+    });
+
+    it('should be an object with an empty hand array and name property', function() {
+        expect(player.name).toBe('dominik');
+        expect(player.hand.length).toBe(0);
+    });
+});
+
+// this is the "main object" - a table has a dealer and n players
+describe('Table', function() {
+    var players;
+    var deck;
+    var dealer;
+    var table;
+
+    beforeEach(function() {
+        players = [new Player('dominik'), new Player('magdalena')];
+        deck = new Deck();
+        dealer = new Dealer(deck);
+        table = new Table(dealer, players);
+    });
+
+    it('should have a players array and a dealer with a deck', function() {
+        expect(table.players.length).toBe(2);
+        expect(table.dealer.deck).toBeTruthy();
+    });
+});
